@@ -4,14 +4,24 @@ repo: status
 sites:
   - name: Collate Workspace
     url: https://collateworkspace.com
+  - name: Collate API
+    url: https://api.collatelabs.com/health
 
 status-website:
   cname: status.collate.ch
   name: Collate Status
-  introTitle: "**Collate Status** — uptime and incident history"
-  introMessage: Real-time and historical status for Collate services.
+  introTitle: "Collate Status"
+  introMessage: "Real-time uptime and incident history for Collate services."
+  logoUrl: /collate-logo.png
+  favicon: /collate-logo.png
+  themeUrl: /theme.css
+  customHeadHtml: |
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#00c758">
   navbar:
     - title: Status
       href: /
-    - title: GitHub
-      href: https://github.com/Collate-Labs/status
+    - title: Collate
+      href: https://www.collate.ch
