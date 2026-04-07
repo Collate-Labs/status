@@ -12,9 +12,9 @@ status-website:
   name: Collate Status
   introTitle: "Collate Status"
   introMessage: "Real-time uptime and incident history for Collate services."
-  logoUrl: /collate-logo.png
-  favicon: /collate-logo.png
-  themeUrl: /theme.css
+  logoUrl: https://status.collate.ch/collate-logo.png
+  favicon: https://status.collate.ch/collate-logo.png
+  themeUrl: https://status.collate.ch/theme.css
   customHeadHtml: |
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
