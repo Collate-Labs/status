@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Collate Workspace",
+    "url": "https://collateworkspace.com",
+    "icon": "https://icons.duckduckgo.com/ip3/collateworkspace.com.ico",
+    "slug": "collate-workspace",
+    "status": "up",
+    "uptime": "100.00%",
+    "uptimeDay": "100.00%",
+    "uptimeWeek": "100.00%",
+    "uptimeMonth": "100.00%",
+    "uptimeYear": "100.00%",
+    "time": 290,
+    "timeDay": 290,
+    "timeWeek": 290,
+    "timeMonth": 290,
+    "timeYear": 290,
+    "dailyMinutesDown": {}
+  }
+]
