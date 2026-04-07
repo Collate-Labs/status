@@ -1,0 +1,15 @@
+name: Static Site CI
+on:
+  schedule:
+    - cron: "0 * * * *"
+  repository_dispatch:
+    types:
+      - static_site
+  workflow_dispatch:
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: upptime/status-page-action@v1
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}

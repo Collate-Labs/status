@@ -1,0 +1,17 @@
+owner: Collate-Labs
+repo: status
+
+sites:
+  - name: Collate Workspace
+    url: https://collateworkspace.com
+
+status-website:
+  cname: status.collate.ch
+  name: Collate Status
+  introTitle: "**Collate Status** — uptime and incident history"
+  introMessage: Real-time and historical status for Collate services.
+  navbar:
+    - title: Status
+      href: /
+    - title: GitHub
+      href: https://github.com/Collate-Labs/status
