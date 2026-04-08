@@ -1,0 +1,594 @@
+/* ============================================================
+   Collate Status — neumorphic theme
+   Soft UI: single base color, dual shadows, no filled blocks
+   ============================================================ */
+
+:root {
+  /* Single neumorphic base — page and every surface use this color */
+  --color-base: #ecedf2;
+  --color-base-darker: #dde0e8;
+
+  /* Text */
+  --color-text: #2d3748;
+  --color-text-soft: #4a5568;
+  --color-muted: #8a94a6;
+
+  /* Status accents — used for text + dot glow ONLY, never as fills */
+  --color-up: #00c758;
+  --color-up-hover: #00a544;
+  --color-down: #fb2c36;
+  --color-down-hover: #e40014;
+  --color-degraded: #f99c00;
+  --color-degraded-hover: #c97d00;
+  --color-accent: #3080ff;
+  --color-accent-hover: #1e63d6;
+
+  /* Neumorphic shadow tokens — soft and subtle */
+  --shadow-dark: rgba(174, 184, 200, 0.32);
+  --shadow-light: rgba(255, 255, 255, 0.7);
+  --neu-out: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+  --neu-out-sm: 2px 2px 6px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
+  --neu-out-lg: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light);
+  --neu-in: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+  --neu-in-sm: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
+
+  /* Type */
+  --font-sans: "Geist", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Lora", Georgia, "Times New Roman", serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Rhythm */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  color-scheme: light;
+}
+
+/* Force light mode regardless of OS preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: light;
+  }
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+html,
+body {
+  background: var(--color-base) !important;
+  color: var(--color-text) !important;
+  font-family: var(--font-sans) !important;
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body * {
+  border-color: transparent;
+}
+
+/* Headings — Lora serif, like collate.ch */
+h1,
+h2,
+h3,
+.intro h1,
+.intro h2,
+header h1,
+main h1,
+main h2 {
+  font-family: var(--font-serif) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.015em !important;
+  color: var(--color-text) !important;
+}
+
+h1,
+.intro h1 {
+  font-size: clamp(2rem, 4vw, 3rem) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 0.5em !important;
+}
+
+h2 {
+  font-size: clamp(1.375rem, 2.5vw, 1.75rem) !important;
+  line-height: 1.2 !important;
+}
+
+h3 {
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  font-size: 1.0625rem !important;
+  letter-spacing: -0.005em !important;
+}
+
+p {
+  color: var(--color-text-soft);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+code,
+pre,
+.mono,
+.monospace {
+  font-family: var(--font-mono) !important;
+  font-size: 0.9em;
+}
+
+/* ============================================================
+   Layout — centered max-width container
+   ============================================================ */
+
+main,
+.container,
+section.container,
+div.container {
+  max-width: 760px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+}
+
+/* ============================================================
+   Navbar — floats on a soft shadow, no hard border
+   ============================================================ */
+
+nav,
+header nav,
+.navbar {
+  background: var(--color-base) !important;
+  border: none !important;
+  border-bottom: none !important;
+  box-shadow: 0 2px 8px var(--shadow-dark) !important;
+  padding: 16px 24px !important;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+nav img,
+header img,
+.navbar img {
+  height: 32px !important;
+  width: auto !important;
+  max-width: 140px;
+  object-fit: contain;
+}
+
+nav a,
+header nav a,
+.navbar a {
+  color: var(--color-text-soft) !important;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  transition: color 160ms ease, box-shadow 160ms ease;
+}
+
+nav a:hover,
+header nav a:hover,
+.navbar a:hover {
+  color: var(--color-text) !important;
+  background: var(--color-base) !important;
+  box-shadow: var(--neu-out-sm);
+}
+
+/* ============================================================
+   Hero / intro section
+   ============================================================ */
+
+.intro,
+section.intro,
+header.intro {
+  text-align: center;
+  padding-top: 64px !important;
+  padding-bottom: 48px !important;
+  border-bottom: none !important;
+}
+
+.intro h1,
+.intro .title {
+  margin-top: 0 !important;
+  margin-bottom: 16px !important;
+}
+
+.intro p,
+.intro .message,
+.intro .description {
+  font-size: 1.0625rem;
+  color: var(--color-muted);
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   Summary block — overall system status
+   ============================================================ */
+
+.summary,
+.status-summary,
+section.summary,
+.overall-status {
+  background: var(--color-base) !important;
+  border: none !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 22px 24px !important;
+  margin: 28px 0 !important;
+  box-shadow: var(--neu-out);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.summary h2,
+.status-summary h2 {
+  margin: 0 !important;
+  font-family: var(--font-sans) !important;
+  font-size: 1.125rem !important;
+  font-weight: 600 !important;
+  color: var(--color-text) !important;
+}
+
+/* State on the summary card is shown by the dot inside it.
+   No background tints — keep the surface neutral. */
+.summary.up,
+.status-summary.up,
+.overall-status.up,
+.summary.down,
+.status-summary.down,
+.overall-status.down,
+.summary.degraded,
+.status-summary.degraded,
+.overall-status.degraded {
+  background: var(--color-base) !important;
+  border: none !important;
+}
+
+/* ============================================================
+   Site cards — one per monitored endpoint
+   ============================================================ */
+
+.site,
+.status,
+.monitor,
+li.site,
+.sites li,
+ul.sites > li {
+  background: var(--color-base) !important;
+  border: none !important;
+  border-radius: var(--radius-md) !important;
+  padding: 18px 22px !important;
+  margin-bottom: 12px !important;
+  list-style: none !important;
+  box-shadow: var(--neu-out-sm);
+  transition: box-shadow 200ms ease;
+}
+
+.site:hover,
+.status:hover,
+.monitor:hover,
+ul.sites > li:hover {
+  box-shadow: var(--neu-out);
+}
+
+.site h3,
+.status h3,
+.monitor h3 {
+  margin: 0 0 4px 0 !important;
+  color: var(--color-text) !important;
+}
+
+.site .url,
+.site small,
+.site .response-time {
+  color: var(--color-muted) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.8125rem !important;
+}
+
+/* ============================================================
+   Status colors — operational / down / degraded
+   Used as TEXT only, never as background fills.
+   ============================================================ */
+
+.up,
+.operational,
+[data-status="up"],
+.status-up {
+  color: var(--color-up) !important;
+}
+
+.down,
+[data-status="down"],
+.status-down {
+  color: var(--color-down) !important;
+}
+
+.degraded,
+[data-status="degraded"],
+.status-degraded {
+  color: var(--color-degraded) !important;
+}
+
+/* Status dot — recessed well with a subtle colored inner glow */
+.status-dot,
+.dot,
+.circle,
+.indicator {
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: var(--radius-pill) !important;
+  display: inline-block;
+  margin-right: 10px;
+  background: var(--color-base) !important;
+  box-shadow: var(--neu-in-sm);
+  flex-shrink: 0;
+}
+
+.summary .status-dot,
+.summary .dot {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+.up .status-dot,
+.up .dot,
+.operational .dot,
+.status-up .dot,
+.status-dot.up,
+.dot.up {
+  box-shadow:
+    inset 2px 2px 4px var(--shadow-dark),
+    inset -2px -2px 4px var(--shadow-light),
+    inset 0 0 4px 1px var(--color-up);
+}
+
+.down .status-dot,
+.down .dot,
+.status-down .dot,
+.status-dot.down,
+.dot.down {
+  box-shadow:
+    inset 2px 2px 4px var(--shadow-dark),
+    inset -2px -2px 4px var(--shadow-light),
+    inset 0 0 4px 1px var(--color-down);
+}
+
+.degraded .status-dot,
+.degraded .dot,
+.status-degraded .dot,
+.status-dot.degraded,
+.dot.degraded {
+  box-shadow:
+    inset 2px 2px 4px var(--shadow-dark),
+    inset -2px -2px 4px var(--shadow-light),
+    inset 0 0 4px 1px var(--color-degraded);
+}
+
+/* Status badges / pills — neumorphic well, status word in color */
+.badge,
+.label,
+.tag {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.02em;
+  text-transform: none;
+  background: var(--color-base) !important;
+  border: none !important;
+  box-shadow: var(--neu-in-sm);
+  display: inline-block;
+}
+
+.up.badge,
+.badge.up,
+.label.up {
+  color: var(--color-up-hover) !important;
+}
+
+.down.badge,
+.badge.down,
+.label.down {
+  color: var(--color-down-hover) !important;
+}
+
+.degraded.badge,
+.badge.degraded,
+.label.degraded {
+  color: var(--color-degraded-hover) !important;
+}
+
+/* ============================================================
+   Buttons — raised neumorphic, pressed on active
+   ============================================================ */
+
+button,
+.button,
+input[type="submit"],
+a.btn {
+  font-family: var(--font-sans) !important;
+  font-weight: 500 !important;
+  font-size: 0.9375rem !important;
+  padding: 10px 18px !important;
+  border-radius: var(--radius-md) !important;
+  border: none !important;
+  background: var(--color-base) !important;
+  color: var(--color-text) !important;
+  cursor: pointer;
+  box-shadow: var(--neu-out-sm);
+  transition: box-shadow 180ms ease, color 160ms ease;
+}
+
+button:hover,
+.button:hover,
+input[type="submit"]:hover,
+a.btn:hover {
+  box-shadow: var(--neu-out);
+  color: var(--color-text) !important;
+}
+
+button:active,
+.button:active,
+input[type="submit"]:active,
+a.btn:active {
+  box-shadow: var(--neu-in-sm);
+}
+
+button.primary,
+.button.primary {
+  background: var(--color-base) !important;
+  color: var(--color-accent) !important;
+  border: none !important;
+  box-shadow: var(--neu-out-sm);
+}
+
+button.primary:hover,
+.button.primary:hover {
+  background: var(--color-base) !important;
+  color: var(--color-accent-hover) !important;
+  box-shadow: var(--neu-out);
+}
+
+button.primary:active,
+.button.primary:active {
+  box-shadow: var(--neu-in-sm);
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+
+footer {
+  margin-top: 64px !important;
+  padding: 28px 24px !important;
+  border: none !important;
+  border-top: none !important;
+  text-align: center;
+  color: var(--color-muted) !important;
+  font-size: 0.875rem;
+  box-shadow: 0 -2px 8px var(--shadow-dark);
+  background: var(--color-base) !important;
+}
+
+footer a {
+  color: var(--color-text-soft) !important;
+}
+
+footer a:hover {
+  color: var(--color-text) !important;
+}
+
+/* Hide built-in "View on GitHub" links in navbar and footer */
+nav a[href*="github.com"],
+header a[href*="github.com"],
+.navbar a[href*="github.com"],
+footer a[href*="github.com"] {
+  display: none !important;
+}
+
+/* ============================================================
+   Misc — selection, scrollbar, focus rings
+   ============================================================ */
+
+::selection {
+  background: rgba(48, 128, 255, 0.18);
+  color: var(--color-text);
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--neu-in-sm), 0 0 0 3px rgba(48, 128, 255, 0.25);
+  border-radius: var(--radius-sm);
+}
+
+/* Soft divider in place of hard hr */
+hr {
+  border: none;
+  height: 1px;
+  background: transparent;
+  box-shadow: 0 1px 0 var(--color-base-darker), 0 2px 0 var(--shadow-light);
+  margin: 40px 0;
+}
+
+/* Tables (incident history, etc.) */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  background: var(--color-base);
+  border-radius: var(--radius-md);
+  box-shadow: var(--neu-out-sm);
+  overflow: hidden;
+  margin: 24px 0;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 14px 18px;
+  border: none;
+  background: var(--color-base);
+}
+
+th {
+  font-weight: 600;
+  color: var(--color-text-soft);
+  box-shadow: inset 0 -1px 0 var(--color-base-darker);
+}
+
+td {
+  color: var(--color-text-soft);
+  box-shadow: inset 0 -1px 0 var(--color-base-darker);
+}
+
+tr:last-child td {
+  box-shadow: none;
+}
+
+/* Form inputs — recessed wells */
+input[type="text"],
+input[type="email"],
+input[type="search"],
+textarea,
+select {
+  background: var(--color-base) !important;
+  border: none !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 12px 16px !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.9375rem !important;
+  color: var(--color-text) !important;
+  box-shadow: var(--neu-in-sm);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="search"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: var(--neu-in-sm), 0 0 0 3px rgba(48, 128, 255, 0.18);
+}
