@@ -22,17 +22,19 @@
     "url": "https://api.collatelabs.com/health",
     "icon": "https://icons.duckduckgo.com/ip3/api.collatelabs.com.ico",
     "slug": "collate-api",
-    "status": "down",
-    "uptime": "100.00%",
-    "uptimeDay": "100.00%",
-    "uptimeWeek": "100.00%",
-    "uptimeMonth": "100.00%",
-    "uptimeYear": "100.00%",
-    "time": 438,
-    "timeDay": 470,
-    "timeWeek": 432,
-    "timeMonth": 416,
-    "timeYear": 438,
-    "dailyMinutesDown": {}
+    "status": "up",
+    "uptime": "99.96%",
+    "uptimeDay": "97.41%",
+    "uptimeWeek": "99.63%",
+    "uptimeMonth": "99.91%",
+    "uptimeYear": "99.96%",
+    "time": 437,
+    "timeDay": 437,
+    "timeWeek": 425,
+    "timeMonth": 415,
+    "timeYear": 437,
+    "dailyMinutesDown": {
+      "2026-06-16": 37
+    }
   }
 ]
